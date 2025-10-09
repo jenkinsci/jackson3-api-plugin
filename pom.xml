@@ -14,7 +14,7 @@
   <version>${revision}-${changelist}</version>
   <packaging>hpi</packaging>
 
-  <name>Jackson3 API Plugin</name>
+  <name>Jackson 3 API Plugin</name>
   <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
   <licenses>
     <license>
@@ -38,7 +38,7 @@
     <jenkins.version>${jenkins.baseline}.1</jenkins.version>
     <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
     <spotless.check.skip>false</spotless.check.skip>
-    <hpi.bundledArtifacts>jackson-annotations,jackson-core,jackson-databind</hpi.bundledArtifacts>
+    <hpi.bundledArtifacts>jackson-annotations,jackson-core,jackson-databind,jackson-dataformat-toml</hpi.bundledArtifacts>
     <hpi.strictBundledArtifacts>true</hpi.strictBundledArtifacts>
     <ban-junit4-imports.skip>false</ban-junit4-imports.skip>
   </properties>
@@ -70,6 +70,10 @@
     <dependency>
       <groupId>tools.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>tools.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-toml</artifactId>
     </dependency>
   </dependencies>
 
