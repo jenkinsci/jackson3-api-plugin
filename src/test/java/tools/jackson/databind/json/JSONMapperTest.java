@@ -19,7 +19,7 @@ class JSONMapperTest {
     @Test
     void smokes() throws Throwable {
         extension.then(r -> {
-            JsonMapper mapper = new JsonMapper();
+            JsonMapper mapper = JsonMapper.builder().build();
             // language=json
             String content =
                     """
