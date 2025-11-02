@@ -21,8 +21,7 @@ class JSONMapperTest {
         extension.then(r -> {
             JsonMapper mapper = JsonMapper.builder().build();
             // language=json
-            String content =
-                    """
+            String content = """
                     {
                       "bar": {
                           "id": "123"
