@@ -38,7 +38,7 @@
     <jenkins.version>${jenkins.baseline}.1</jenkins.version>
     <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
     <spotless.check.skip>false</spotless.check.skip>
-    <hpi.bundledArtifacts>jackson-annotations,jackson-core,jackson-databind,jackson-dataformat-toml</hpi.bundledArtifacts>
+    <hpi.bundledArtifacts>jackson-annotations,jackson-core,jackson-databind,jackson-dataformat-toml,jackson-dataformat-yaml</hpi.bundledArtifacts>
     <hpi.strictBundledArtifacts>true</hpi.strictBundledArtifacts>
     <ban-junit4-imports.skip>false</ban-junit4-imports.skip>
     <ban-commons-lang-2.skip>false</ban-commons-lang-2.skip>
@@ -60,10 +60,20 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <!-- TODO Remove when on bom -->
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>snakeyaml-engine-api</artifactId>
+        <version>3.0.1-5.vd98ea_ff3b_92e</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
   <dependencies>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>snakeyaml-engine-api</artifactId>
+    </dependency>
     <dependency>
       <groupId>tools.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
@@ -75,6 +85,16 @@
     <dependency>
       <groupId>tools.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-toml</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>tools.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-yaml</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.snakeyaml</groupId>
+          <artifactId>snakeyaml-engine</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
 
