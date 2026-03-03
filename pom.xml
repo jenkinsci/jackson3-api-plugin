@@ -38,7 +38,7 @@
     <jenkins.version>${jenkins.baseline}.1</jenkins.version>
     <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
     <spotless.check.skip>false</spotless.check.skip>
-    <hpi.bundledArtifacts>jackson-annotations,jackson-core,jackson-databind,jackson-dataformat-toml,jackson-dataformat-yaml</hpi.bundledArtifacts>
+    <hpi.bundledArtifacts>jackson-annotations,jackson-core,jackson-databind,jackson-dataformat-toml,jackson-dataformat-xml,jackson-dataformat-yaml</hpi.bundledArtifacts>
     <hpi.strictBundledArtifacts>true</hpi.strictBundledArtifacts>
     <ban-junit4-imports.skip>false</ban-junit4-imports.skip>
     <ban-commons-lang-2.skip>false</ban-commons-lang-2.skip>
@@ -49,7 +49,7 @@
       <dependency>
         <groupId>io.jenkins.tools.bom</groupId>
         <artifactId>bom-${jenkins.baseline}.x</artifactId>
-        <version>5933.vcf06f7b_5d1a_2</version>
+        <version>5983.v443959746f1f</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -66,6 +66,12 @@
         <artifactId>snakeyaml-engine-api</artifactId>
         <version>3.0.1-5.vd98ea_ff3b_92e</version>
       </dependency>
+      <!-- TODO Remove when on bom -->
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>woodstox-core-api</artifactId>
+        <version>7.1.1-1.v4d297985f397</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -73,6 +79,10 @@
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>snakeyaml-engine-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>woodstox-core-api</artifactId>
     </dependency>
     <dependency>
       <groupId>tools.jackson.core</groupId>
@@ -85,6 +95,21 @@
     <dependency>
       <groupId>tools.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-toml</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>tools.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-xml</artifactId>
+      <!-- Provided by woodstox-core API plugin -->
+      <exclusions>
+        <exclusion>
+          <groupId>com.fasterxml.woodstox</groupId>
+          <artifactId>woodstox-core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.codehaus.woodstox</groupId>
+          <artifactId>stax2-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>tools.jackson.dataformat</groupId>
